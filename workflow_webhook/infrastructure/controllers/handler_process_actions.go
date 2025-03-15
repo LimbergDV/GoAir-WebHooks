@@ -1,7 +1,7 @@
 package infrastructure
 
 import (
-	aplication "GoAir-WebHooks/pull_reques_webhook/application"
+	aplication "GoAir-WebHooks/workflow_webhook/application"
 	"log"
 	"net/http"
 
@@ -27,8 +27,8 @@ func HandleActionsEvent(ctx *gin.Context) {
 	switch eventType {
 	case "ping":
 		ctx.JSON(http.StatusOK, gin.H{"status": "success"})
-	case "pull_request":
-		status, msg := aplication.ProcessPullRequestEvent(rawData)
+	case "workflow_run":
+		status, msg := aplication.ProcessWorkflowEvent(rawData)
 
 		statusCode = status
 

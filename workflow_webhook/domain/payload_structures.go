@@ -5,7 +5,7 @@ type WebhookPayload struct {
     Repository  Repository   `json:"repository"`
     Sender      Sender       `json:"sender"`
     Workflow    Workflow     `json:"workflow"`
-    WorkflowRun WorkflowRun  `json:"workflow_run"`
+    WorkflowRun *WorkflowRun  `json:"workflow_run"`
 }
 
 type Repository struct {

@@ -22,7 +22,7 @@ func ProcessPullRequestEvent(rawData []byte) (int, string) {
 		log.Printf("El pull viene de la rama:  %s \n", eventPayload.PullRequest.Head.Ref)
 		log.Printf("Usuario: %s \n", eventPayload.PullRequest.User.Login)
 		log.Printf("Nombre del repositorio: %s \n", eventPayload.Repository.FullName)
-
+		
 		// Verifica si el PR fue fusionado
 		if eventPayload.PullRequest.Merged != nil && *eventPayload.PullRequest.Merged {
 			log.Printf("El Pull Request fue fusionado exitosamente\n")
