@@ -14,6 +14,7 @@ type PullRequest struct {
 	Base  Base   `json:"base"`
 	URL   string `json:"url"`
 	User  User   `json:"user"`
+	Merged  *bool    `json:"merged"`
 }
 
 type Branch struct {
