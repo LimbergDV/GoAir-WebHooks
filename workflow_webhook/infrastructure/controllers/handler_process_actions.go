@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func HandlePullRequestEvent(ctx *gin.Context) {
+func HandleActionsEvent(ctx *gin.Context) {
 
 	eventType := ctx.GetHeader("X-GitHub-Event")
 	// deliveryD := ctx.GetHeader("X-GitHub-Delivery")

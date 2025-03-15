@@ -1,33 +1,43 @@
 package domain
 
-import "time"
-
-type Workflow struct {
-	BadgeURL   string    `json:"badge_url"`   // URL del badge
-	CreatedAt  time.Time `json:"created_at"`  // Fecha de creación
-	HTMLURL    string    `json:"html_url"`    // URL HTML
-	ID         int       `json:"id"`          // ID del workflow
-	Name       string    `json:"name"`        // Nombre del workflow
-	NodeID     string    `json:"node_id"`     // Identificador único
-	Path       string    `json:"path"`        // Ruta
-	State      string    `json:"state"`       // Estado del workflow
-	UpdatedAt  time.Time `json:"updated_at"`  // Fecha de actualización
-	URL        string    `json:"url"`         // URL API
+type WebhookPayload struct {
+    Action      string       `json:"action"`
+    Repository  Repository   `json:"repository"`
+    Sender      Sender       `json:"sender"`
+    Workflow    Workflow     `json:"workflow"`
+    WorkflowRun WorkflowRun  `json:"workflow_run"`
 }
 
+type Repository struct {
+    ID   int    `json:"id"`
+    Name string `json:"name"`
+    URL  string `json:"url"`
+}
 
-type PullRequest struct {
-	ID     int    `json:"id"`
-	Number int    `json:"number"`
-	URL    string `json:"url"`
+type Sender struct {
+    Login string `json:"login"`
+    ID    int    `json:"id"`
+    URL   string `json:"url"`
+}
+
+type Workflow struct {
+    ID        int    `json:"id"`
+    Name      string `json:"name"`
+    State     string `json:"state"`
+    BadgeURL  string `json:"badge_url"`
+    CreatedAt string `json:"created_at"`
+    UpdatedAt string `json:"updated_at"`
+    URL       string `json:"url"`
 }
 
 type WorkflowRun struct {
-	Conclusion          *string             `json:"conclusion"` // Puede ser null
-	CreatedAt           time.Time           `json:"created_at"`
-	Event               string              `json:"event"`
-	HeadBranch          *string             `json:"head_branch"` // Puede ser null
-	PullRequests        []PullRequest       `json:"pull_requests"`
-	RunStartedAt        time.Time           `json:"run_started_at"`
-	Status              string              `json:"status"`
+    ID          int     `json:"id"`
+    Name        string  `json:"name"`
+    Status      string  `json:"status"`
+    Conclusion  *string `json:"conclusion"`
+    CreatedAt   string  `json:"created_at"`
+    RunNumber   int     `json:"run_number"`
+    RunStartedAt string `json:"run_started_at"`
+    WorkflowID  int     `json:"workflow_id"`
+    WorkflowURL string  `json:"workflow_url"`
 }
