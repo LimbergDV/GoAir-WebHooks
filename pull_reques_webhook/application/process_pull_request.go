@@ -1,7 +1,7 @@
 package aplication
 
 import (
-	"GoAir-WebHooks/domain"
+	"GoAir-WebHooks/pull_reques_webhook/domain"
 	"encoding/json"
 	"fmt"
 	"log"

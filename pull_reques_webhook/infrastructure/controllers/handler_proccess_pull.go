@@ -1,7 +1,7 @@
 package infrastructure
 
 import (
-	"GoAir-WebHooks/pull_reques_webhook/aplication"
+	aplication "GoAir-WebHooks/pull_reques_webhook/application"
 	"log"
 	"net/http"
 
