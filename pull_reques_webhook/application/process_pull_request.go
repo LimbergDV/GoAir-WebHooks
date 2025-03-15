@@ -9,13 +9,13 @@ import (
 
 func ProcessPullRequestEvent(rawData []byte) (int, string) {
 	var eventPayload domain.PullRequestEventPayload
-
+ 	var message string
 	// Deserializa el JSON recibido en la estructura de datos
 	if err := json.Unmarshal(rawData, &eventPayload); err != nil {
 		return 403, " "
 	}
 
-	message := createMessage(eventPayload.PullRequest.Base.Ref, eventPayload.PullRequest.Head.Ref, eventPayload.PullRequest.User.Login, eventPayload.Repository.FullName)
+	//message := createMessage(eventPayload.PullRequest.Base.Ref, eventPayload.PullRequest.Head.Ref, eventPayload.PullRequest.User.Login, eventPayload.Repository.FullName)
 
 	// Verifica la acción del Pull Request usando if else
 	if eventPayload.Action == "closed" {
@@ -24,7 +24,7 @@ func ProcessPullRequestEvent(rawData []byte) (int, string) {
 		log.Printf("El pull viene de la rama:  %s \n", eventPayload.PullRequest.Head.Ref)
 		log.Printf("Usuario: %s \n", eventPayload.PullRequest.User.Login)
 		log.Printf("Nombre del repositorio: %s \n", eventPayload.Repository.FullName)
-
+		
 		// Verifica si el PR fue fusionado
 		if eventPayload.PullRequest.Merged != nil && *eventPayload.PullRequest.Merged {
 			log.Printf("El Pull Request fue fusionado exitosamente\n")
