@@ -7,7 +7,7 @@ import (
 )
 
 func SendMessageToDiscord(msg string) int {
-    const URL = "https://discord.com/api/webhooks/1350529783964110940/mBGoldkrSyXlo3E-_3IN4VFPSqLOGGlAvK1pINixWD0An1ZiiLu1E8TiNJ_aUV5xYcyX"
+    const URL = "https://discord.com/api/webhooks/1350530363721650228/D86TVRMcxJONK7peGp7sLeiUiGHBBlQWAVr_NjA9VONysEUdmN2qXKOhTom3QLjB21kj"
 
     payload := map[string]string{
         "content": msg,
